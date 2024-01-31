@@ -14,7 +14,7 @@ class DishType(models.Model):
 
 
 class Cook(AbstractUser):
-    year_of_experience = models.IntegerField()
+    year_of_experience = models.IntegerField(null=True, blank=True)
 
     class Meta:
         verbose_name = "cook"
@@ -31,7 +31,7 @@ class Dish(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=7, decimal_places=2)
-    dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
+    dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE, related_name="cooks")
     cooks = models.ManyToManyField(Cook, related_name="cooks")
 
     def __str__(self):
