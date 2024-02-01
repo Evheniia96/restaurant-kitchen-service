@@ -28,4 +28,5 @@ def index(request):
 
 class CookListView(generic.ListView):
     model = Cook
+    template_name = "restaurant/cook_list.html"
 
