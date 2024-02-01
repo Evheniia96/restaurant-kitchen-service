@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.views import generic
 
 from restaurant.models import Cook, Dish, DishType
 
 
-@login_required
+# @login_required
 def index(request):
     """View function for the home page of the site."""
 
@@ -23,3 +24,8 @@ def index(request):
     }
 
     return render(request, "restaurant/index.html", context=context)
+
+
+class CookListView(generic.ListView):
+    model = Cook
+
