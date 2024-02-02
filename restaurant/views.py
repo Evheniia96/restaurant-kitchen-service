@@ -28,7 +28,6 @@ def index(request):
 
 class CookListView(generic.ListView):
     model = Cook
-    template_name = "restaurant/cook_list.html"
 
 
 class DishListView(generic.ListView):
@@ -37,4 +36,5 @@ class DishListView(generic.ListView):
 
 class DishTypeListView(generic.ListView):
     model = DishType
+    template_name = "restaurant/dish_type_list.html"
 
