@@ -28,10 +28,12 @@ def index(request):
 
 class CookListView(generic.ListView):
     model = Cook
+    paginate_by = 2
 
 
 class DishListView(generic.ListView):
     model = Dish
+    paginate_by = 2
     queryset = Dish.objects.all().select_related("dish_type")
 
 
@@ -41,6 +43,7 @@ class DishDetailView(generic.DetailView):
 
 class DishTypeListView(generic.ListView):
     model = DishType
+    paginate_by = 2
     template_name = "restaurant/dish_type_list.html"
     context_object_name = "dish_type_list"
 
