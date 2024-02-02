@@ -5,7 +5,12 @@
       Dish List
     </h1>
     {% if dish_list %}
-    {% for dish in dish_list %}{% endfor %}
+    {% for dish in dish_list %}
+        <li>
+          <a href="#">{{ dish.id }} {{ dish.name }}</a>
+          ({{ dish.price }}) {{ dish.dish_type.name }}
+        </li>
+    {% endfor %}
     {% else %}
       <p>There are no dishes in the service.</p>
     {% endif %}

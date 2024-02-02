@@ -5,7 +5,9 @@
       Dish Type List
     </h1>
     {% if dish_type_list %}
-    {% for dish_type in dis_type_list %}{% endfor %}
+    {% for dish_type in dish_type_list %}
+        <p>{{ dish_type.name }}</p>
+    {% endfor %}
     {% else %}
       <p>There are no dish types in the service.</p>
     {% endif %}
