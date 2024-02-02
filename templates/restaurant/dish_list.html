@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>
+      Dish List
+    </h1>
+    {% if dish_list %}
+    {% for dish in dish_list %}{% endfor %}
+    {% else %}
+      <p>There are no dishes in the service.</p>
+    {% endif %}
+{% endblock %}

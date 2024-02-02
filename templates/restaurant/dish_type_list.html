@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>
+      Dish Type List
+    </h1>
+    {% if dish_type_list %}
+    {% for dish_type in dis_type_list %}{% endfor %}
+    {% else %}
+      <p>There are no dish types in the service.</p>
+    {% endif %}
+{% endblock %}

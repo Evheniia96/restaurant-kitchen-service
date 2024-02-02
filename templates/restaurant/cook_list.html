@@ -9,7 +9,7 @@
     {% for cook in cook_list %}
       <tr>
         <td>{{ cook.id }}</td>
-        <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>
+{#        <td><a href="{{ cook.get_absolute_url }}">{{ cook.username }} {% if user == cook %} (Me){% endif %}</a></td>#}
         <td>{{ cook.first_name }}</td>
         <td>{{ cook.last_name }}</td>
         <td>{{ cook.year_of_experience }}</td>
