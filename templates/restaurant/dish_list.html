@@ -7,7 +7,7 @@
     {% if dish_list %}
     {% for dish in dish_list %}
         <li>
-          <a href="#">{{ dish.id }} {{ dish.name }}</a>
+          <a href="{% url 'restaurant:dish-detail' pk=dish.id %}">{{ dish.id }} {{ dish.name }}</a>
           ({{ dish.price }}) {{ dish.dish_type.name }}
         </li>
     {% endfor %}
