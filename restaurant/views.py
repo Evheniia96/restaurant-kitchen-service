@@ -17,9 +17,9 @@ def index(request):
     request.session["num_visits"] = num_visits + 1
 
     context = {
-        "num_drivers": num_cooks,
-        "num_cars": num_dishes,
-        "num_manufacturers": num_dish_types,
+        "num_cooks": num_cooks,
+        "num_dishes": num_dishes,
+        "num_dish_types": num_dish_types,
         "num_visits": num_visits + 1,
     }
 
@@ -32,6 +32,7 @@ class CookListView(generic.ListView):
 
 class DishListView(generic.ListView):
     model = Dish
+    queryset = Dish.objects.all().select_related("dish_type")
 
 
 class DishTypeListView(generic.ListView):
