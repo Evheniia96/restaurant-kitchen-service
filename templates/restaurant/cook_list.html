@@ -8,7 +8,7 @@
     {% if cook_list %}
     {% for cook in cook_list %}
       <ul>
-        <li>{{ cook.id }} <a href="#">
+        <li>{{ cook.id }} <a href="{% url 'restaurant:cook-detail' pk=cook.id %}">
             {{ cook.username }} {% if user == cook %} (Me)
         {% endif %} ({{ cook.first_name }} {{ cook.last_name }}) {{ cook.year_of_experience }} year experience</a></li>
       </ul>

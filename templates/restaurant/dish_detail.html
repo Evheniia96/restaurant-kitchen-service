@@ -16,7 +16,8 @@
   <ul>
     {% for cook in dish.cooks.all %}
       <li>{{ cook.username }} ({{cook.first_name }} {{ cook.last_name }})</li>
+    {% empty %}
+        <p>No cooks!</p>
     {% endfor %}
   </ul>
-
 {% endblock %}
