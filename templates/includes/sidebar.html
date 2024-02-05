@@ -1,6 +1,25 @@
-<ul>
-  <li><a href="{% url 'restaurant:index' %}">Home</a></li>
-  <li><a href="{% url 'restaurant:cook-list' %}">All cooks</a></li>
-  <li><a href="{% url 'restaurant:dish-type-list' %}">All dish types</a></li>
-  <li><a href="{% url 'restaurant:dish-list' %}">All dishes</a></li>
+<ul class="sidebar-nav list-group">
+    {% if user.is_authenticated %}
+        <li class="list-group-item">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
+        <li class="list-group-item">
+
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+        </li>
+    {% else %}
+        <li class="list-group-item">
+        <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <button type="submit">Login</button>
+    </form>
+        </li>
+    {% endif %}
+    <br>
+
+    <li><a href="{% url 'restaurant:index' %}">Home</a></li>
+    <li><a href="{% url 'restaurant:cook-list' %}">All cooks</a></li>
+    <li><a href="{% url 'restaurant:dish-type-list' %}">All dish types</a></li>
+    <li><a href="{% url 'restaurant:dish-list' %}">All dishes</a></li>
 </ul>
