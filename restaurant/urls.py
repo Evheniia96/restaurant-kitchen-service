@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, CookListView, DishListView, DishTypeListView, DishDetailView, CookDetailView
+from .views import index, CookListView, DishListView, DishTypeListView, DishDetailView, CookDetailView, DishCreateView
 
 urlpatterns = [
     path("", index, name="index"),
@@ -7,6 +7,7 @@ urlpatterns = [
     path("dish/", DishListView.as_view(), name="dish-list"),
     path("dish_type/", DishTypeListView.as_view(), name="dish-type-list"),
     path("dish/<int:pk>/", DishDetailView.as_view(), name="dish-detail"),
+    path("dish/create/", DishCreateView.as_view(), name="dish-create"),
     path("cook/<int:pk>/", CookDetailView.as_view(), name="cook-detail"),
     ]
 
