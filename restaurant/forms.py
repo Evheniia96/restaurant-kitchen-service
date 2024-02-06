@@ -21,7 +21,26 @@ class CookCreationForm(UserCreationForm):
         )
 
     def clean_year_of_experience(self):
-        validate_year_of_experience = self.cleaned_data["year_of_experience"]
-        if validate_year_of_experience > 100:
-            raise ValidationError("Year of experience should be less than 100")
-        return validate_year_of_experience
+        return validate_year_of_experience(self.cleaned_data["year_of_experience"])
+
+
+class CookExperienceUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Cook
+        fields = ["year_of_experience"]
+
+    def clean_year_of_experience(self):
+        return validate_year_of_experience(self.cleaned_data["year_of_experience"])
+
+
+def validate_year_of_experience(
+    year_of_experience,
+):
+    if year_of_experience > 100:
+        raise ValidationError("Year of experience should be less than 100")
+    elif not year_of_experience.isdigit():
+        raise ValidationError("Year of experience should be digits")
+
+    return year_of_experience
+
+
