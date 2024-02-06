@@ -40,5 +40,3 @@ def validate_year_of_experience(
         raise ValidationError("Year of experience should be less than 100")
 
     return year_of_experience
-
-
