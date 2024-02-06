@@ -3,6 +3,9 @@
 {% block content %}
     <h1>
       {{ dish.name }}
+        <a href="{% url 'restaurant:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
     </h1>
     <li>Price: {{ dish.price }} $</li>
     <p>Dish type: {{ dish.dish_type }}</p>

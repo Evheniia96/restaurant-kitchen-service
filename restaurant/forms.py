@@ -38,8 +38,6 @@ def validate_year_of_experience(
 ):
     if year_of_experience > 100:
         raise ValidationError("Year of experience should be less than 100")
-    elif not year_of_experience.isdigit():
-        raise ValidationError("Year of experience should be digits")
 
     return year_of_experience
 
