@@ -4,8 +4,11 @@
     <h1>
       Cook List<a href="{% url 'restaurant:cook-create' %}" class="btn btn-primary link-to-page">
         Create
-      </a>
-    </h1>
+      </a></h1>
+        <form method="get" action="" class="form-inline">
+            {{ search_form.as_p }}
+            <input class="btn btn-secondary" type="submit" value="search" >
+        </form>
 
     {% if cook_list %}
     {% for cook in cook_list %}

@@ -10,6 +10,7 @@ class DishForm(forms.ModelForm):
     cooks = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
+        required=False,
     )
 
     class Meta:
@@ -46,3 +47,33 @@ def validate_year_of_experience(
         raise ValidationError("Year of experience should be less than 100")
 
     return year_of_experience
+
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput
+        (attrs={"placeholder": "Search by dish"})
+    )
+
+
+class DishTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput
+        (attrs={"placeholder": "Search by dish type"})
+    )
+
+
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput
+        (attrs={"placeholder": "Search by cook"})
+    )

@@ -6,6 +6,10 @@
       Create
     </a>
     </h1>
+    <form method="get" action="" class="form-inline">
+    {{ search_form.as_p }}
+    <input class="btn btn-secondary" type="submit" value="search" >
+  </form>
     {% if dish_list %}
     {% for dish in dish_list %}
         <li>
