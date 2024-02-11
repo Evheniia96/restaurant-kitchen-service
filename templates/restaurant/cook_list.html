@@ -1,25 +1,67 @@
-{% extends "base.html" %}
+{% extends "layouts/base_background.html" %}
+{% load crispy_forms_filters %}
+{% load static %}
+
+{% block title %} Cook List {% endblock %}
+
+{% block body_class %}  {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-    <h1>
-      Cook List<a href="{% url 'restaurant:cook-create' %}" class="btn btn-primary link-to-page">
-        Create
-      </a></h1>
-        <form method="get" action="" class="form-inline">
-            {{ search_form.as_p }}
-            <input class="btn btn-secondary" type="submit" value="search" >
-        </form>
 
-    {% if cook_list %}
+
+<section class="py-7 position-relative" style="background-image: url('{% static 'img/desert2.0.jpg' %}'); background-size:cover;">
+  <span class="mask bg-gradient-dark opacity-7"></span>
+  <div class="container position-relative mb-14">
+    <div class="row">
+      <div class="col-md-6 mb-5 ">
+        <h3 class="text-white z-index-1 position-relative text-center">Cooks List</h3>
+          <a href="{% url 'restaurant:cook-create' %}" class="btn btn-danger link-to-page">
+        Create
+      </a>
+        <form method="get" action="" class="form-inline text-lg">
+            {{ search_form|crispy }}
+            <input class="btn btn-warning" type="submit" value="search" >
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 col-12">
+        <div class="card card-profile mt-4">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 mt-n5">
+              <a href="javascript:;">
+                <div class="p-3 pe-md-0">
+                  <img class="w-100 border-radius-md shadow-lg" src="/static/img/shef.jpg" alt="image">
+                </div>
+              </a><p class="mb-0 ms-sm-3">  A cook is a person professionally engaged in preparing food for public catering.</p>
+            </div>{% if cook_list %}
     {% for cook in cook_list %}
-      <ul>
-        <li>{{ cook.id }} <a href="{% url 'restaurant:cook-detail' pk=cook.id %}">
-            {{ cook.username }} {% if user == cook %} (Me)
-        {% endif %} ({{ cook.first_name }} {{ cook.last_name }}) {{ cook.year_of_experience }} year experience</a></li>
-      </ul>
+            <div class="col-lg-8 col-md-6 col-12 my-auto">
+              <div class="card-body ps-lg-0">
+              <ul>
+                <li>
+                    <h4> <a href="{% url 'restaurant:cook-detail' pk=cook.id %}">
+                        {{ cook.username }} {% if user == cook %} (Me)</a></h4>
+                {% endif %}
+                    <h5 class="text-dark">{{ cook.first_name }} {{ cook.last_name }}</h5>
+                    <h6 class="text-secondary">{{ cook.year_of_experience }} year experience</h6>
+                </li>
+              </ul>
     {% endfor %}
 
-    {% else %}
-      <p>There are no cooks in the service.</p>
-    {% endif %}
-{% endblock %}
+            {% else %}
+              <p>There are no cooks in the service.</p>
+            {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content%}
+</div>
+</section>
