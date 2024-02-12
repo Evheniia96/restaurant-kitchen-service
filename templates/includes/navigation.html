@@ -1,4 +1,5 @@
-  <!-- Navbar -->
+{% load crispy_forms_filters %}
+<!-- Navbar -->
   <div class="container position-sticky z-index-sticky top-0">
     <div class="row">
       <div class="col-12">
@@ -68,26 +69,21 @@
                       </div>
                     </div>
                   </ul>
-                </li>
-                <li class="nav-item my-auto ms-3 ms-lg-4">
-                  <a href="{{ user.get_absolute_url }}" target="_blank" class="btn btn-sm  bg-gradient-warning  mb-0 me-1 mt-2 mt-md-0" title="Your page">My profile: {{ user.get_username }}</a>
-                </li>
+                    <li class="nav-item my-auto ms-3 ms-lg-4">
+                      <a href="{{ user.get_absolute_url }}" target="_blank" class="btn btn-sm  bg-gradient-warning  mb-0 me-7 mt-2 mt-md-0" title="Your page">My profile: {{ user.get_username }}
+                      </a>
+                    </li>
+                    {% if user.is_authenticated %}
 
-
-                {% if request.user.is_authenticated %}
-                  <li class="nav-item ms-lg-4">
-                    <a class="nav-link nav-link-icon me-2"
-                      href="{% url 'login' %}">
-                      <i class="fa fa-sign-out me-1"></i>
-                      <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sign OUT">Logout</p>
-                    </a>
-                  </li>          
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm  bg-gradient-dark  mb-0 me-1 mt-2 mt-md-0" title="Sign OUT">Logout</button>
+                    </form>
                 {% endif %}
+                </ul>
               </div>
             </nav>
-
             </div>
           </div>
         <!-- End Navbar -->
       </div>
-    </div>
