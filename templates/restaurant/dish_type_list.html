@@ -1,40 +1,74 @@
-{% extends "base.html" %}
+{% extends "layouts/base_background.html" %}
+{% load crispy_forms_filters %}
+{% load static %}
+
+{% block title %} Dish List{% endblock %}
+
+{% block body_class %}  {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-    <h1>
-      Dish Type List<a href="{% url 'restaurant:dish-type-create' %}" class="btn btn-primary link-to-page">
+
+
+<section class="py-7 position-relative" style="background-image: url('{% static 'img/desert2.0.jpg' %}'); background-size:cover;">
+  <span class="mask bg-gradient-dark opacity-7"></span>
+  <div class="container position-relative mb-14">
+    <div class="row">
+      <div class="col-md-6 mb-5 ">
+        <h3 class="text-white z-index-1 position-relative text-center offset-lg-7">Dish Type</h3>
+          <a href="{% url 'restaurant:dish-type-create' %}" class="btn btn-danger link-to-page">
         Create
       </a>
-    </h1>
-    <form method="get" action="" class="form-inline">
-        {{ search_form.as_p }}
-        <input class="btn btn-secondary" type="submit" value="search" >
-    </form>
-    {% if dish_type_list %}<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Dish type</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
-    {% for dish_type in dish_type_list %}
-        <tr>
-            <td>{{ dish_type.id }}</td>
-            <td>{{ dish_type.name }}</td>
-            <td>
-                <a href="{% url 'restaurant:dish_type-update' pk=dish_type.id %}">
-                Update
-                </a>
-            </td>
-            <td>
-                <a href="{% url 'restaurant:dish-type-delete' pk=dish_type.id %}" class="btn btn-danger">
-                    Delete
-            </a>
-            </td>
-        </tr>
-    {% endfor %}
-    </table>
-    {% else %}
-      <p>There are no dish types in the service.</p>
-    {% endif %}
-{% endblock %}
+        <form method="get" action="" class="form-inline text-lg">
+            {{ search_form|crispy }}
+            <input class="btn btn-warning" type="submit" value="search" >
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 col-12">
+        <div class="card card-profile mt-0">
+          <div class="row">
+            <div class="col-lg-5 col-md-6 col-12 mt-n12 mb-0 offset-lg-10">
+              <a href="javascript:;">
+              </a><p class="mb-0 ms-sm-3"></p>
+            </div>
+            </div>
+          {% if dish_type_list %}
+              <table class="table offset-lg-0.5">
+            <tr>
+                <th> </th>
+                <th>ID</th>
+                <th>Dish type</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            {% for dish_type in dish_type_list %}
+                <tr>
+                    <td> </td>
+                    <td>{{ dish_type.id }}</td>
+                    <td>{{ dish_type.name }}</td>
+                    <td>
+                        <a href="{% url 'restaurant:dish_type-update' pk=dish_type.id %}" class="btn btn-warning">
+                        Update
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'restaurant:dish-type-delete' pk=dish_type.id %}" class="btn btn-danger">
+                            Delete
+                    </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </table>
+                {% else %}
+                  <p>There are no dish types in the service.</p>
+            {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+{% endblock content%}
+</section>
