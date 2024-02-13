@@ -13,18 +13,18 @@ class ModelsTests(TestCase):
 
     def test_cook_str(self):
         cook = Cook.objects.create(
-            username="test_user",
-            first_name="test_first",
-            last_name="test_last"
+            username="test_user", first_name="test_first", last_name="test_last"
         )
-        self.assertEqual(str(cook),
-                         f"{cook.username}"
-                         f" ({cook.first_name} {cook.last_name})")
+        self.assertEqual(
+            str(cook), f"{cook.username}" f" ({cook.first_name} {cook.last_name})"
+        )
 
     def test_dish_str(self):
         dish_type = DishType.objects.create(name="test")
         dish = Dish.objects.create(name="test_name", price="15.50", dish_type=dish_type)
-        self.assertEqual(str(dish), f"{dish.name} (price: {dish.price}, dish type: {dish.dish_type})")
+        self.assertEqual(
+            str(dish), f"{dish.name} (price: {dish.price}, dish type: {dish.dish_type})"
+        )
 
     def test_create_cook_with_year_of_experience(self):
         username = "test_user"
@@ -41,10 +41,6 @@ class ModelsTests(TestCase):
 
     def test_cook_get_absolute_url(self):
         cook = get_user_model().objects.create(
-            username="test",
-            first_name="test_first",
-            last_name="test_last"
+            username="test", first_name="test_first", last_name="test_last"
         )
-        self.assertEqual(
-            cook.get_absolute_url(), "/cook/1/"
-        )
+        self.assertEqual(cook.get_absolute_url(), "/cook/1/")

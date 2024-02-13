@@ -4,8 +4,14 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from restaurant.forms import DishForm, CookCreationForm, CookExperienceUpdateForm, DishSearchForm, CookSearchForm, \
-    DishTypeSearchForm
+from restaurant.forms import (
+    DishForm,
+    CookCreationForm,
+    CookExperienceUpdateForm,
+    DishSearchForm,
+    CookSearchForm,
+    DishTypeSearchForm,
+)
 from restaurant.models import Cook, Dish, DishType
 
 
@@ -143,4 +149,3 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = DishType
     success_url = reverse_lazy("restaurant:dish-type-list")
     template_name = "restaurant/dish_type_confirm_delete.html"
-

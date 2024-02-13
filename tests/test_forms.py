@@ -1,5 +1,10 @@
 from django.test import TestCase
-from restaurant.forms import (CookCreationForm, CookSearchForm, DishTypeSearchForm, DishSearchForm)
+from restaurant.forms import (
+    CookCreationForm,
+    CookSearchForm,
+    DishTypeSearchForm,
+    DishSearchForm,
+)
 
 
 class CookCreationFormTest(TestCase):
@@ -10,7 +15,7 @@ class CookCreationFormTest(TestCase):
             "password2": "testPASSWORD",
             "year_of_experience": 5,
             "first_name": "test_first",
-            "last_name": "test_last"
+            "last_name": "test_last",
         }
         form = CookCreationForm(data=form_date)
         self.assertTrue(form.is_valid())

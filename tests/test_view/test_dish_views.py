@@ -22,21 +22,11 @@ class PublicDishTests(TestCase):
 
     def test_update_delete_login_required(self):
         dish_type = DishType.objects.create(name="test_dish_type")
-        Dish.objects.create(
-            dish_type=dish_type,
-            name="Test_name",
-            price=100
-        )
-        dish = self.client.get(reverse(
-            "restaurant:dish-update",
-            kwargs={"pk": 1}
-        ))
+        Dish.objects.create(dish_type=dish_type, name="Test_name", price=100)
+        dish = self.client.get(reverse("restaurant:dish-update", kwargs={"pk": 1}))
         self.assertNotEqual(dish.status_code, 200)
 
-        dish = self.client.get(reverse(
-            "restaurant:dish-delete",
-            kwargs={"pk": 1}
-        ))
+        dish = self.client.get(reverse("restaurant:dish-delete", kwargs={"pk": 1}))
         self.assertNotEqual(dish.status_code, 200)
 
 
@@ -55,10 +45,7 @@ class PrivateDishTests(TestCase):
         response = self.client.get(DISH_URL)
         self.assertEqual(response.status_code, 200)
         dish = Dish.objects.all()
-        self.assertEqual(
-            list(response.context["dish_list"]),
-            list(dish)
-        )
+        self.assertEqual(list(response.context["dish_list"]), list(dish))
         self.assertTemplateUsed(response, "restaurant/dish_list.html")
 
 

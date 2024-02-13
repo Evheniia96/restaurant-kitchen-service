@@ -27,10 +27,7 @@ class PrivateCookTests(TestCase):
 
     def test_get_content_data(self):
         res = self.client.get(COOK_URL)
-        self.assertIsInstance(
-            res.context["search_form"],
-            CookSearchForm
-        )
+        self.assertIsInstance(res.context["search_form"], CookSearchForm)
 
     def test_create_cook(self):
         form_data = {
