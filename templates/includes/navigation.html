@@ -1,0 +1,89 @@
+{% load crispy_forms_filters %}
+<!-- Navbar -->
+  <div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+      <div class="col-12">
+        <nav class="navbar navbar-expand-lg  blur border-radius-xl mt-4 top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+          <div class="container-fluid px-0">
+            <a class="navbar-brand font-weight-bolder ms-sm-3" href="/" rel="tooltip" title="" data-placement="bottom">
+              Restaurant Service
+            </a>
+            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </span>
+            </button>
+            <li class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
+              <ul class="navbar-nav navbar-nav-hover ms-auto">
+                  <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item my-auto ms-3 ms-lg-0"><a href="{% url 'restaurant:index' %}" target="_blank" class="btn btn-sm  bg-gradient-danger  mb-0 me-1 mt-2 mt-md-0">Home page</a></li>
+                  </a>
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item my-auto ms-3 ms-lg-0"><a href="{% url 'restaurant:cook-list' %}" target="_blank" class="btn btn-sm  bg-gradient-danger  mb-0 me-1 mt-2 mt-md-0">All Cooks</a></li>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages">
+                    <div class="d-none d-lg-block">
+                      <a href="/templates/restaurant/sign-in.html" class="dropdown-item border-radius-md">
+                        <span>Sign In</span>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false">
+                      <li class="nav-item my-auto ms-3 ms-lg-0"><a href="{% url 'restaurant:dish-list' %}" target="_blank" class="btn btn-sm  bg-gradient-danger  mb-0 me-3 mt-1 mt-md-0">All Dishes</a></li>
+                  </a>
+                </li>
+                <li class="nav-item dropdown dropdown-hover mx-2"><li class="nav-item my-auto ms-3 ms-lg-0"><a href="{% url 'restaurant:dish-type-list' %}" target="_blank" class="btn btn-sm  bg-gradient-danger  mb-0 me-2 mt-2 mt-md-0">All Dish Types</a></li>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md dropdown-md-responsive mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs">
+                    <div class="d-none d-lg-block">
+                      <ul class="list-group">
+                        <li class="nav-item list-group-item border-0 p-0">
+                          <a class="dropdown-item py-2 ps-3 border-radius-md" target="_blank" href="#">
+                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Support</h6>
+                            <span class="text-sm">Get support from experts (email and Discord)</span>
+                          </a>
+                        </li>
+                        <li class="nav-item list-group-item border-0 p-0">
+                          <a class="dropdown-item py-2 ps-3 border-radius-md" target="_blank" href="#">
+                            <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Getting Started - UI Docs</h6>
+                            <span class="text-sm">Explore this collection of fully designed components</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="row d-lg-none">
+                      <div class="col-md-12 g-0">
+                        <a class="dropdown-item py-2 ps-3 border-radius-md" target="_blank" href="#">
+                          <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Support</h6>
+                          <span class="text-sm">Get support from experts (email and Discord)</span>
+                        </a>
+                        <a class="dropdown-item py-2 ps-3 border-radius-md" target="_blank" href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit?AFFILIATE=128200">
+                          <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">Getting Started - UI Docs</h6>
+                          <span class="text-sm">Explore this collection of fully designed components</span>
+                        </a>
+                      </div>
+                    </div>
+                  </ul>
+                    <li class="nav-item my-auto ms-3 ms-lg-4">
+                      <a href="{{ user.get_absolute_url }}" target="_blank" class="btn btn-sm  bg-gradient-warning  mb-0 me-7 mt-2 mt-md-0" title="Your page">My profile: {{ user.get_username }}
+                      </a>
+                    </li>
+                    {% if user.is_authenticated %}
+
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm  bg-gradient-dark  mb-0 me-1 mt-2 mt-md-0" title="Sign OUT">Logout</button>
+                    </form>
+                {% endif %}
+                </ul>
+              </div>
+            </nav>
+            </div>
+          </div>
+        <!-- End Navbar -->
+      </div>

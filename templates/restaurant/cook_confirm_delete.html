@@ -1,0 +1,28 @@
+{% extends "layouts/base_background.html" %}
+
+{% load static %}
+
+{% block title %} Delete cook {% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <div class="position-absolute  fixed-top ms-auto w-50 h-100 rounded-3 max-height-vh-100 z-index-0 d-none d-sm-none d-md-block me-n4" style="background-image: url('/static/img/cooks2.0.jpg'); background-size: cover;">
+    </div>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-7 d-flex justify-content-center flex-column">
+                    <div class="card card-body d-flex justify-content-center shadow-lg p-5 blur align-items-center">
+                        <h1>Delete cook?</h1>
+
+                        <p>Are you sure you want to delete the cook: {{ cook.username }}?</p>
+                      <form  action="" method="post">
+                        {% csrf_token %}
+
+                        <input type="submit" value="Yes" class="btn btn-danger">
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

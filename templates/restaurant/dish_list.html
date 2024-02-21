@@ -1,0 +1,63 @@
+{% extends "layouts/base_background.html" %}
+{% load crispy_forms_filters %}
+{% load static %}
+
+{% block title %} Dish List{% endblock %}
+
+{% block body_class %}  {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+<section class="py-7 position-relative" style="background-image: url('{% static 'img/desert2.0.jpg' %}'); background-size:cover;">
+  <span class="mask bg-gradient-dark opacity-7"></span>
+  <div class="container position-relative mb-14">
+    <div class="row">
+      <div class="col-md-6 mb-5 ">
+        <h3 class="text-white z-index-1 position-relative text-center">Dish List</h3>
+          <a href="{% url 'restaurant:dish-create' %}" class="btn btn-danger link-to-page">
+        Create
+      </a>
+        <form method="get" action="" class="form-inline text-lg">
+            {{ search_form|crispy }}
+            <input class="btn btn-warning" type="submit" value="search" >
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 col-12">
+        <div class="card card-profile mt-4">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 mt-n5">
+              <a href="javascript:;">
+                <div class="p-3 pe-md-0">
+                  <img class="w-100 border-radius-md shadow-lg" src="/static/img/meet1.jpg" alt="image">
+                </div>
+              </a><p class="mb-0 ms-sm-3">Restaurant dishes are culinary masterpieces created by professional chefs who know how to combine various ingredients and seasonings.</p>
+            </div>
+            {% if dish_list %}
+            {% for dish in dish_list %}
+            <div class="col-lg-8 col-md-6 col-12 my-auto">
+                  <div class="card-body ps-lg-0">
+                  <ul>
+                    <li>
+                        <h4>
+                            <a href="{% url 'restaurant:dish-detail' pk=dish.id %}">{{ dish.id }} {{ dish.name }}</a></h4>
+                        <h6 class="text-dark">price: {{ dish.price }}$</h6>
+                        <h6 class="text-secondary">{{ dish.dish_type.name }}</h6></li></ul>
+                {% endfor %}
+                {% else %}
+                  <p>There are no dishes in the service.</p>
+            {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content%}
+</div>
+</section>
