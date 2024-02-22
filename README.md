@@ -6,7 +6,7 @@
 Restaurant Kitchen Service is a comprehensive management system designed to enhance communication and streamline operational processes within a restaurant kitchen. As the owner, you aim to create an efficient platform where cooks can collaboratively manage and organize the creation of new dishes and dish types. This system empowers cooks to contribute to the culinary offerings of the restaurant by adding innovative dishes to the menu.
 ## Check it out
 
-[Restaurant project deployed to Render](https://restaurant-kitchen-service.render.com/)
+[Restaurant project deployed to Render](https://restaurant-kitchen-service-3nxi.onrender.com)
 
 
 ## Installation
