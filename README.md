@@ -75,3 +75,12 @@ Cooks can quickly add, edit, or update dishes with minimal effort, enhancing ove
 * Performance 
 
 The Restaurant Kitchen Service is designed to elevate the efficiency and collaboration within the kitchen, ultimately contributing to the success and reputation of the restaurant. Whether you are a small bistro or a large-scale eatery, this management system aims to be a valuable tool in enhancing the culinary operations of your establishment.
+
+## Test user
+
+To use our application in test mode, use the following data for a test user:
+
+- **Username:** user
+- **Password:** user12345
+
+Please use this data only in a test environment.
